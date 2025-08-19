@@ -4,6 +4,12 @@ output: html_notebook
 ---
 
 ```{r}
+# Load necessary packages
+library(dplyr)
+```
+
+
+```{r}
 # Setting up and checking data frame
 df <- read.csv("/Users/thomassimmons/c/p/data/SDUD-2024.csv")
 head(df)
@@ -43,5 +49,25 @@ summary(df_clean)
 ```{r}
 # No more null values
 colSums(is.na(df_clean))
+```
+```{r}
+# Check how many rows have suppression
+table(df_clean$`Suppression.Used`)
+
+# Filter suppressed rows
+suppressed <- df %>% filter(`Suppression.Used` == TRUE)
+
+# Filter non-suppressed rows
+not_suppressed <- df %>% filter(`Suppression.Used` == FALSE)
+```
+
+```{r}
+colnames(df_clean) <- colnames(df_clean) |>
+  tolower() |>
+  gsub("\\.", "_", x = _)
+```
+
+```{r}
+colnames(df_clean)
 ```
 
