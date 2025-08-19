@@ -1,0 +1,26 @@
+---
+title: "Initial dataset cleaning"
+output: html_notebook
+---
+
+```{r}
+# Setting up and checking data frame
+df <- read.csv("/Users/thomassimmons/c/p/data/SDUD-2024.csv")
+head(df)
+```
+
+```{r}
+# Number of columns
+ncol(df)
+```
+
+```{r}
+na_rows <- which(rowSums(is.na(df)) > 0)
+df[na_rows, ]
+```
+```{r}
+# Version with all na values removed
+df_clean <- na.omit(df)
+```
+
+
