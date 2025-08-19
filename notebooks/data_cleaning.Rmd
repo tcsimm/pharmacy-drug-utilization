@@ -36,5 +36,12 @@ dim(df_clean)
 colnames(df_clean)
 ```
 
+```{r}
+summary(df_clean)
+```
 
+```{r}
+# No more null values
+colSums(is.na(df_clean))
+```
 
