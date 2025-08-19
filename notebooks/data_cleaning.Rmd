@@ -23,4 +23,18 @@ df[na_rows, ]
 df_clean <- na.omit(df)
 ```
 
+```{r}
+# Export clean csv
+write.csv(df_clean, file = "df_clean.csv", row.names = FALSE)
+```
+
+```{r}
+dim(df_clean)
+```
+
+```{r}
+colnames(df_clean)
+```
+
+
 
