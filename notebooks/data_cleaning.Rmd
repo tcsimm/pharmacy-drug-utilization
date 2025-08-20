@@ -70,4 +70,8 @@ colnames(df_clean) <- colnames(df_clean) |>
 ```{r}
 colnames(df_clean)
 ```
+```{r}
+# Export clean csv again
+write.csv(df_clean, file = "df_clean.csv", row.names = FALSE)
+```
 

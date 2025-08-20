@@ -4,5 +4,5 @@ output: html_notebook
 ---
 
 ```{r}
-plot(cars)
+df <- read.csv("/Users/thomassimmons/c/p/data/df_clean.csv")
 ```
