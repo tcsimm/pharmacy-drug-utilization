@@ -4,5 +4,13 @@ output: html_notebook
 ---
 
 ```{r}
+# Read cleaned data frame
 df <- read.csv("/Users/thomassimmons/c/p/data/df_clean.csv")
 ```
+
+```{r}
+# Install packages
+library(tidyverse)
+library(janitor)
+```
+
