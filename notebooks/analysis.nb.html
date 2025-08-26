@@ -1797,11 +1797,110 @@ cat_cols &lt;- names(df)[sapply(df, function(x) is.character(x) | is.factor(x))]
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBTbWFsbCBjYXJkaW5hbGl0eSBjYXRlZ29yaWNhbHNcbmNhdF9zbWFsbCA8LSBjYXRfY29sc1tzYXBwbHkoZGZbY2F0X2NvbHNdLCBmdW5jdGlvbih4KSBsZW5ndGgodW5pcXVlKG5hLm9taXQoeCkpKSA8PSAyMCldXG5cbmNhdChcIk51bWVyaWMgY29sczpcIiwgaGVhZChudW1fY29scywgOCksIFwiXFxuXCIpXG5gYGAifQ== -->
+<pre class="r"><code># Small cardinality categoricals
+cat_small &lt;- cat_cols[sapply(df[cat_cols], function(x) length(unique(na.omit(x))) &lt;= 20)]
+
+cat(&quot;Numeric cols:&quot;, head(num_cols, 8), &quot;\n&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiTnVtZXJpYyBjb2xzOiBOREMgTGFiZWxlci5Db2RlIFByb2R1Y3QuQ29kZSBQYWNrYWdlLlNpemUgWWVhciBRdWFydGVyIFVuaXRzLlJlaW1idXJzZWQgTnVtYmVyLm9mLlByZXNjcmlwdGlvbnMgXG4ifQ== -->
+<pre><code>Numeric cols: NDC Labeler.Code Product.Code Package.Size Year Quarter Units.Reimbursed Number.of.Prescriptions </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2F0KFwiQ2F0ZWdvcmljYWwgKHNtYWxsKSBjb2xzOlwiLCBoZWFkKGNhdF9zbWFsbCwgNSksIFwiXFxuXFxuXCIpXG5gYGAifQ== -->
+<pre class="r"><code>cat(&quot;Categorical (small) cols:&quot;, head(cat_small, 5), &quot;\n\n&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiQ2F0ZWdvcmljYWwgKHNtYWxsKSBjb2xzOiBVdGlsaXphdGlvbi5UeXBlIFN1cHByZXNzaW9uLlVzZWQgXG4ifQ== -->
+<pre><code>Categorical (small) cols: Utilization.Type Suppression.Used </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibnJvdyI6MywibmNvbCI6Niwic3VtbWFyeSI6eyJEZXNjcmlwdGlvbiI6WyJkZiBbMyDDlyA2XSJdfX0sInJkZiI6Ikg0c0lBQUFBQUFBQUF3dHlpVERtaXVCaVlHQmdabUJoWm1aZ1pnVXlHVmhEUTl4MExSZ1lXSmlBSEVZR0ZnWk9FRjBCVkNRTVpMQUJzUUJFQjFpQ0pUYzFNUS9LWmk0dXpZVXllWlB6Uy9OSzR2UHk4L0pLYzNLQUFud2dlU2RsaVpjT3JuRU96dVZySnY3Yy9IR1RvL1BWUlF3UUFKWjNlTUtXS1BWdG5wV1R4YVZQZjRNWkdERGtKNWRVc1QyZFkrVDRRazZraGdHTHZHbjRvWFV2ZGlRN2RwWHF6OEFtUDM4Qm1PUDRlWmFpRklvOGltZFo4eEp6VTR1aEhtV0RDckxscHBZVVpTYkR2T3JuNGd4bDh2Z2tKcVhtcEJicE9lZW5wTUxFQW9yeVUwcVRTMURGRXBPekU5TlQ5WUl6cTJCaUxKR3BpVVZvdG5NVzVaZnJ3VnpBQzhSTURSQTNNcU03TXprbnNSam1USmdnVjBwaVNhSmVXaEZRUDVEM0QwMExlMzVCU1daK0hsQVRFM0prd21PNUNFMkF2elFQNUpJVTNlU00wcnhzWFZNMGFlYUN2SFNRbldBaENPQ0ZzcG1SMkd3UVZ6RDlSdy9TMUx6MHpEeFlXTERtZ01JUlpuSkthaG1VeVFjTUQzQnc2QlVVWmVhVndQd0pGQzNXSzhrdlNZUnA0VXJPejRHSmdIM084QThBK0dEaXl1RUNBQUE9In0= -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["metric"],"name":[1],"type":["chr"],"align":["left"]},{"label":["NDC"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Labeler.Code"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Product.Code"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Package.Size"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["Year"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"mean","2":"4.101116e+10","3":"4.101103e+04","4":"1.245119e+03","5":"2.134281e+01","6":"2024"},{"1":"sum","2":"1.066187e+17","3":"1.066184e+11","4":"3.236996e+09","5":"5.548594e+07","6":"5261889952"},{"1":"count_nonnull","2":"2.599748e+06","3":"2.599748e+06","4":"2.599748e+06","5":"2.599748e+06","6":"2599748"}],"options":{"columns":{"min":{},"max":[10],"total":[6]},"rows":{"min":[10],"max":[10],"total":[3]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBPdmVyYWxsIG51bWVyaWMgc3VtbWFyeVxuaWYgKGxlbmd0aChudW1fY29scykgPiAwKSB7XG4gIG92ZXJhbGwgPC0gZGF0YS5mcmFtZShcbiAgICBtZXRyaWMgPSBjKFwibWVhblwiLCBcInN1bVwiLCBcImNvdW50X25vbm51bGxcIilcbiAgKVxuICBmb3IgKGMgaW4gaGVhZChudW1fY29scywgNSkpIHtcbiAgICB2YWxzIDwtIGMobWVhbihkZltbY11dLCBuYS5ybSA9IFRSVUUpLFxuICAgICAgICAgICAgICBzdW0oZGZbW2NdXSwgbmEucm0gPSBUUlVFKSxcbiAgICAgICAgICAgICAgc3VtKCFpcy5uYShkZltbY11dKSkpXG4gICAgb3ZlcmFsbFtbY11dIDwtIHZhbHNcbiAgfVxuICBjYXQoXCJPdmVyYWxsIG51bWVyaWMgc3VtbWFyeSAoZmlyc3QgNSBudW1lcmljIGNvbHMpOlxcblwiKVxuICBwcmludChvdmVyYWxsKVxufVxuXG5gYGAifQ== -->
+<pre class="r"><code># Overall numeric summary
+if (length(num_cols) &gt; 0) {
+  overall &lt;- data.frame(
+    metric = c(&quot;mean&quot;, &quot;sum&quot;, &quot;count_nonnull&quot;)
+  )
+  for (c in head(num_cols, 5)) {
+    vals &lt;- c(mean(df[[c]], na.rm = TRUE),
+              sum(df[[c]], na.rm = TRUE),
+              sum(!is.na(df[[c]])))
+    overall[[c]] &lt;- vals
+  }
+  cat(&quot;Overall numeric summary (first 5 numeric cols):\n&quot;)
+  print(overall)
+}
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiT3ZlcmFsbCBudW1lcmljIHN1bW1hcnkgKGZpcnN0IDUgbnVtZXJpYyBjb2xzKTpcbiJ9 -->
+<pre><code>Overall numeric summary (first 5 numeric cols):</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MiwibmNvbCI6MTYsInN1bW1hcnkiOnsiQSB0aWJibGUiOlsiMiDDlyAxNiJdfX0sInJkZiI6Ikg0c0lBQUFBQUFBQUF3dHlpVERtaXVCaVlHQmdabUJoWm1aZ1pnVXlHVmhEUTl4MExSZ1lXSmlBSEVZR0ZnWk9FRjBCVkNRTVpBaEFNUk5VZ3NYWDJUOFV4blp6Q3c0RjBud2dlU2VsNzUrT2JIa3Q2NlRzc0dIS05CMUdtTGh6NXZiOXEzKzRzVG1uTGt4eHp6dWlCUlRqQlpzbnVqR2RRZkRuWFpnNmg4ZVBMMHkvM0tUaThNUkEzTjVGY0N2Y1hLM3ZYYXdwREF4T2F1dWl2enFCSEl4RC94U2VFMHJpOXMwT2svYXN2YVkrUHcybUxtZFB5SlFRRTM4Zm5QcE1DMWUyblFxKzdtQnEwWEM0SlBNN1RCM2pSWDE1eHRxeUt6ajF6VjhBZGd5TWhvazdQaTBJT2cxa09ENDgvRDZUQVp0N1VRS2FOUzh4TjdVWUh0QVFRWUhRa3N5Y3pLckVrc3o4UEwyUXlvSlVxRGlIbjR0emZHNXFZaDZVenc3aUY1Zm1Rcm1jSUc1eWZtbGVDVlJBMENjeEtUVW50VWpQT1Q4bEZWbWpBSW9Fd2dRaEZIRVVvd0tLOGxOS2swc3dqVUtSUURJS1JSelZxTVRrN01UMFZMM2d6Q28wbzVBbGtJMUNGa2MyaWpNeU5iRUkyUWdPc0FCQ0t4ZVlEOUdDR3ZDY1JmbmxlckRBQjhkUUE1RDQvLy8vUC9RWVNzNUpMSWJGRUV5UUt5V3hKRkV2clFpb0g4aEQxOEtlWHdDS09xQW1KbEFlWWtQVHpGaUVKc0JmbWdkeVNZcHVja1pwWHJhdU9abzBjMEZlT3NoT3NCQWlTVEdDa3hXQ0xRQnhCZE4vcUhZMnFIYTIxTHowekR4WUdtTE5BVVV4ek9TVTFESW9rdzhZSHVEZzBDc295b1FITUJkUXRGaXZKTDhrRWFhRkt6ay9CeVlDOWpuRFB3RGFsMEdSV0FRQUFBPT0ifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Utilization.Type"],"name":[1],"type":["chr"],"align":["left"]},{"label":["NDC_mean"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["NDC_sum"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["NDC_count"],"name":[4],"type":["int"],"align":["right"]},{"label":["Labeler.Code_mean"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["Labeler.Code_sum"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["Labeler.Code_count"],"name":[7],"type":["int"],"align":["right"]},{"label":["Product.Code_mean"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["Product.Code_sum"],"name":[9],"type":["int"],"align":["right"]},{"label":["Product.Code_count"],"name":[10],"type":["int"],"align":["right"]},{"label":["Package.Size_mean"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["Package.Size_sum"],"name":[12],"type":["int"],"align":["right"]},{"label":["Package.Size_count"],"name":[13],"type":["int"],"align":["right"]},{"label":["Year_mean"],"name":[14],"type":["dbl"],"align":["right"]},{"label":["Year_sum"],"name":[15],"type":["dbl"],"align":["right"]},{"label":["Year_count"],"name":[16],"type":["int"],"align":["right"]}],"data":[{"1":"MCOU","2":"40734646874","3":"5.791127e+16","4":"1421671","5":"40734.52","6":"57911083698","7":"1421671","8":"1283.195","9":"1824281748","10":"1421671","11":"21.44399","12":"30486303","13":"1421671","14":"2024","15":"2877462104","16":"1421671"},{"1":"FFSU","2":"41344846411","3":"4.870741e+16","4":"1178077","5":"41344.73","6":"48707271329","7":"1178077","8":"1199.170","9":"1412714316","10":"1178077","11":"21.22071","12":"24999636","13":"1178077","14":"2024","15":"2384427848","16":"1178077"}],"options":{"columns":{"min":{},"max":[10],"total":[16]},"rows":{"min":[10],"max":[10],"total":[2]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBHcm91cC1ieTogZmlyc3Qgc21hbGwgY2F0ZWdvcmljYWwgdnMgZmlyc3QgZmV3IG51bWVyaWNcbmlmIChsZW5ndGgoY2F0X3NtYWxsKSA+IDAgJiBsZW5ndGgobnVtX2NvbHMpID4gMCkge1xuICBnY29sIDwtIGNhdF9zbWFsbFsxXVxuICBnYiA8LSBkZiAlPiVcbiAgICBncm91cF9ieSguZGF0YVtbZ2NvbF1dKSAlPiVcbiAgICBzdW1tYXJpc2UoYWNyb3NzKGFsbF9vZihoZWFkKG51bV9jb2xzLCA1KSksXG4gICAgICAgICAgICAgICAgICAgICBsaXN0KG1lYW4gPSB+bWVhbigueCwgbmEucm0gPSBUUlVFKSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgc3VtID0gfnN1bSgueCwgbmEucm0gPSBUUlVFKSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgY291bnQgPSB+c3VtKCFpcy5uYSgueCkpKSxcbiAgICAgICAgICAgICAgICAgICAgIC5uYW1lcyA9IFwiey5jb2x9X3suZm59XCIpKSAlPiVcbiAgICBhcnJhbmdlKGRlc2MoZ2V0KHBhc3RlMChoZWFkKG51bV9jb2xzLCAxKSwgXCJfY291bnRcIikpKSlcbiAgY2F0KFwiXFxuR3JvdXAtYnkgJ1wiLCBnY29sLCBcIicgKGZpcnN0IDUgbnVtZXJpYyBjb2xzKTpcXG5cIiwgc2VwID0gXCJcIilcbiAgcHJpbnQoaGVhZChnYiwgMTApKVxufSBlbHNlIHtcbiAgY2F0KFwiXFxuTm8gc3VpdGFibGUgY2F0ZWdvcmljYWwgb3IgbnVtZXJpYyBjb2x1bW5zIGZvciBncm91cC1ieS5cXG5cIilcbn1cblxuYGBgIn0= -->
+<pre class="r"><code># Group-by: first small categorical vs first few numeric
+if (length(cat_small) &gt; 0 &amp; length(num_cols) &gt; 0) {
+  gcol &lt;- cat_small[1]
+  gb &lt;- df %&gt;%
+    group_by(.data[[gcol]]) %&gt;%
+    summarise(across(all_of(head(num_cols, 5)),
+                     list(mean = ~mean(.x, na.rm = TRUE),
+                          sum = ~sum(.x, na.rm = TRUE),
+                          count = ~sum(!is.na(.x))),
+                     .names = &quot;{.col}_{.fn}&quot;)) %&gt;%
+    arrange(desc(get(paste0(head(num_cols, 1), &quot;_count&quot;))))
+  cat(&quot;\nGroup-by &#39;&quot;, gcol, &quot;&#39; (first 5 numeric cols):\n&quot;, sep = &quot;&quot;)
+  print(head(gb, 10))
+} else {
+  cat(&quot;\nNo suitable categorical or numeric columns for group-by.\n&quot;)
+}
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5Hcm91cC1ieSAnVXRpbGl6YXRpb24uVHlwZScgKGZpcnN0IDUgbnVtZXJpYyBjb2xzKTpcbiJ9 -->
+<pre><code>
+Group-by &#39;Utilization.Type&#39; (first 5 numeric cols):</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaWYgKGxlbmd0aChjYXRfc21hbGwpID49IDIpIHtcbiAgY3QgPC0gdGFibGUoZGZbW2NhdF9zbWFsbFsxXV1dLCBkZltbY2F0X3NtYWxsWzJdXV0pXG4gIGNhdChcIlxcbkNyb3NzdGFiIGNvdW50czogJ1wiLCBjYXRfc21hbGxbMV0sIFwiJyB4ICdcIiwgY2F0X3NtYWxsWzJdLCBcIidcXG5cIiwgc2VwID0gXCJcIilcbiAgcHJpbnQoaGVhZChjdCwgMTApKVxufSBlbHNlIHtcbiAgY2F0KFwiXFxuQ3Jvc3N0YWIgc2tpcHBlZCAobmVlZCBhdCBsZWFzdCB0d28gc21hbGwtY2FyZGluYWxpdHkgY2F0ZWdvcmljYWxzKS5cXG5cIilcbn1cbmBgYCJ9 -->
+<pre class="r"><code>if (length(cat_small) &gt;= 2) {
+  ct &lt;- table(df[[cat_small[1]]], df[[cat_small[2]]])
+  cat(&quot;\nCrosstab counts: &#39;&quot;, cat_small[1], &quot;&#39; x &#39;&quot;, cat_small[2], &quot;&#39;\n&quot;, sep = &quot;&quot;)
+  print(head(ct, 10))
+} else {
+  cat(&quot;\nCrosstab skipped (need at least two small-cardinality categoricals).\n&quot;)
+}</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5Dcm9zc3RhYiBjb3VudHM6ICdVdGlsaXphdGlvbi5UeXBlJyB4ICdTdXBwcmVzc2lvbi5Vc2VkJ1xuICAgICAgXG4gICAgICAgICBmYWxzZVxuICBGRlNVIDExNzgwNzdcbiAgTUNPVSAxNDIxNjcxXG4ifQ== -->
+<pre><code>
+Crosstab counts: &#39;Utilization.Type&#39; x &#39;Suppression.Used&#39;
+      
+         false
+  FFSU 1178077
+  MCOU 1421671</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUGhhcm1hY3kgYW5hbHlzaXMiCm91dHB1dDogaHRtbF9ub3RlYm9vawotLS0KCmBgYHtyfQojIFJlYWQgY2xlYW5lZCBkYXRhIGZyYW1lCmRmIDwtIHJlYWQuY3N2KCIvVXNlcnMvdGhvbWFzc2ltbW9ucy9jL3AvZGF0YS9kZl9jbGVhbi5jc3YiKQpgYGAKCmBgYHtyfQojIEluc3RhbGwgcGFja2FnZXMKbGlicmFyeSh0aWR5dmVyc2UpCmxpYnJhcnkoamFuaXRvcikKYGBgCmBgYHtyfQojIERldGVjdCB0eXBlcwpudW1fY29scyA8LSBuYW1lcyhkZilbc2FwcGx5KGRmLCBpcy5udW1lcmljKV0KY2F0X2NvbHMgPC0gbmFtZXMoZGYpW3NhcHBseShkZiwgZnVuY3Rpb24oeCkgaXMuY2hhcmFjdGVyKHgpIHwgaXMuZmFjdG9yKHgpKV0KYGBgCgoKYGBge3J9CmBgYAoK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUGhhcm1hY3kgYW5hbHlzaXMiCm91dHB1dDogaHRtbF9ub3RlYm9vawotLS0KCmBgYHtyfQojIFJlYWQgY2xlYW5lZCBkYXRhIGZyYW1lCmRmIDwtIHJlYWQuY3N2KCIvVXNlcnMvdGhvbWFzc2ltbW9ucy9jL3AvZGF0YS9kZl9jbGVhbi5jc3YiKQpgYGAKCmBgYHtyfQojIEluc3RhbGwgcGFja2FnZXMKbGlicmFyeSh0aWR5dmVyc2UpCmxpYnJhcnkoamFuaXRvcikKYGBgCmBgYHtyfQojIERldGVjdCB0eXBlcwpudW1fY29scyA8LSBuYW1lcyhkZilbc2FwcGx5KGRmLCBpcy5udW1lcmljKV0KY2F0X2NvbHMgPC0gbmFtZXMoZGYpW3NhcHBseShkZiwgZnVuY3Rpb24oeCkgaXMuY2hhcmFjdGVyKHgpIHwgaXMuZmFjdG9yKHgpKV0KYGBgCgoKYGBge3J9CiMgU21hbGwgY2FyZGluYWxpdHkgY2F0ZWdvcmljYWxzCmNhdF9zbWFsbCA8LSBjYXRfY29sc1tzYXBwbHkoZGZbY2F0X2NvbHNdLCBmdW5jdGlvbih4KSBsZW5ndGgodW5pcXVlKG5hLm9taXQoeCkpKSA8PSAyMCldCgpjYXQoIk51bWVyaWMgY29sczoiLCBoZWFkKG51bV9jb2xzLCA4KSwgIlxuIikKY2F0KCJDYXRlZ29yaWNhbCAoc21hbGwpIGNvbHM6IiwgaGVhZChjYXRfc21hbGwsIDUpLCAiXG5cbiIpCmBgYAoKYGBge3J9CiMgT3ZlcmFsbCBudW1lcmljIHN1bW1hcnkKaWYgKGxlbmd0aChudW1fY29scykgPiAwKSB7CiAgb3ZlcmFsbCA8LSBkYXRhLmZyYW1lKAogICAgbWV0cmljID0gYygibWVhbiIsICJzdW0iLCAiY291bnRfbm9ubnVsbCIpCiAgKQogIGZvciAoYyBpbiBoZWFkKG51bV9jb2xzLCA1KSkgewogICAgdmFscyA8LSBjKG1lYW4oZGZbW2NdXSwgbmEucm0gPSBUUlVFKSwKICAgICAgICAgICAgICBzdW0oZGZbW2NdXSwgbmEucm0gPSBUUlVFKSwKICAgICAgICAgICAgICBzdW0oIWlzLm5hKGRmW1tjXV0pKSkKICAgIG92ZXJhbGxbW2NdXSA8LSB2YWxzCiAgfQogIGNhdCgiT3ZlcmFsbCBudW1lcmljIHN1bW1hcnkgKGZpcnN0IDUgbnVtZXJpYyBjb2xzKTpcbiIpCiAgcHJpbnQob3ZlcmFsbCkKfQpgYGAKCmBgYHtyfQojIEdyb3VwLWJ5OiBmaXJzdCBzbWFsbCBjYXRlZ29yaWNhbCB2cyBmaXJzdCBmZXcgbnVtZXJpYwppZiAobGVuZ3RoKGNhdF9zbWFsbCkgPiAwICYgbGVuZ3RoKG51bV9jb2xzKSA+IDApIHsKICBnY29sIDwtIGNhdF9zbWFsbFsxXQogIGdiIDwtIGRmICU+JQogICAgZ3JvdXBfYnkoLmRhdGFbW2djb2xdXSkgJT4lCiAgICBzdW1tYXJpc2UoYWNyb3NzKGFsbF9vZihoZWFkKG51bV9jb2xzLCA1KSksCiAgICAgICAgICAgICAgICAgICAgIGxpc3QobWVhbiA9IH5tZWFuKC54LCBuYS5ybSA9IFRSVUUpLAogICAgICAgICAgICAgICAgICAgICAgICAgIHN1bSA9IH5zdW0oLngsIG5hLnJtID0gVFJVRSksCiAgICAgICAgICAgICAgICAgICAgICAgICAgY291bnQgPSB+c3VtKCFpcy5uYSgueCkpKSwKICAgICAgICAgICAgICAgICAgICAgLm5hbWVzID0gInsuY29sfV97LmZufSIpKSAlPiUKICAgIGFycmFuZ2UoZGVzYyhnZXQocGFzdGUwKGhlYWQobnVtX2NvbHMsIDEpLCAiX2NvdW50IikpKSkKICBjYXQoIlxuR3JvdXAtYnkgJyIsIGdjb2wsICInIChmaXJzdCA1IG51bWVyaWMgY29scyk6XG4iLCBzZXAgPSAiIikKICBwcmludChoZWFkKGdiLCAxMCkpCn0gZWxzZSB7CiAgY2F0KCJcbk5vIHN1aXRhYmxlIGNhdGVnb3JpY2FsIG9yIG51bWVyaWMgY29sdW1ucyBmb3IgZ3JvdXAtYnkuXG4iKQp9CmBgYApgYGB7cn0KIyBGaXJzdCB0d28gc21hbGwgY2F0ZWdvcmljYWwKaWYgKGxlbmd0aChjYXRfc21hbGwpID49IDIpIHsKICBjdCA8LSB0YWJsZShkZltbY2F0X3NtYWxsWzFdXV0sIGRmW1tjYXRfc21hbGxbMl1dXSkKICBjYXQoIlxuQ3Jvc3N0YWIgY291bnRzOiAnIiwgY2F0X3NtYWxsWzFdLCAiJyB4ICciLCBjYXRfc21hbGxbMl0sICInXG4iLCBzZXAgPSAiIikKICBwcmludChoZWFkKGN0LCAxMCkpCn0gZWxzZSB7CiAgY2F0KCJcbkNyb3NzdGFiIHNraXBwZWQgKG5lZWQgYXQgbGVhc3QgdHdvIHNtYWxsLWNhcmRpbmFsaXR5IGNhdGVnb3JpY2FscykuXG4iKQp9CmBgYAoK</div>
 
 
 

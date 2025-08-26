@@ -21,5 +21,56 @@ cat_cols <- names(df)[sapply(df, function(x) is.character(x) | is.factor(x))]
 
 
 ```{r}
+# Small cardinality categoricals
+cat_small <- cat_cols[sapply(df[cat_cols], function(x) length(unique(na.omit(x))) <= 20)]
+
+cat("Numeric cols:", head(num_cols, 8), "\n")
+cat("Categorical (small) cols:", head(cat_small, 5), "\n\n")
+```
+
+```{r}
+# Overall numeric summary
+if (length(num_cols) > 0) {
+  overall <- data.frame(
+    metric = c("mean", "sum", "count_nonnull")
+  )
+  for (c in head(num_cols, 5)) {
+    vals <- c(mean(df[[c]], na.rm = TRUE),
+              sum(df[[c]], na.rm = TRUE),
+              sum(!is.na(df[[c]])))
+    overall[[c]] <- vals
+  }
+  cat("Overall numeric summary (first 5 numeric cols):\n")
+  print(overall)
+}
+```
+
+```{r}
+# Group-by: first small categorical vs first few numeric
+if (length(cat_small) > 0 & length(num_cols) > 0) {
+  gcol <- cat_small[1]
+  gb <- df %>%
+    group_by(.data[[gcol]]) %>%
+    summarise(across(all_of(head(num_cols, 5)),
+                     list(mean = ~mean(.x, na.rm = TRUE),
+                          sum = ~sum(.x, na.rm = TRUE),
+                          count = ~sum(!is.na(.x))),
+                     .names = "{.col}_{.fn}")) %>%
+    arrange(desc(get(paste0(head(num_cols, 1), "_count"))))
+  cat("\nGroup-by '", gcol, "' (first 5 numeric cols):\n", sep = "")
+  print(head(gb, 10))
+} else {
+  cat("\nNo suitable categorical or numeric columns for group-by.\n")
+}
+```
+```{r}
+# First two small categorical
+if (length(cat_small) >= 2) {
+  ct <- table(df[[cat_small[1]]], df[[cat_small[2]]])
+  cat("\nCrosstab counts: '", cat_small[1], "' x '", cat_small[2], "'\n", sep = "")
+  print(head(ct, 10))
+} else {
+  cat("\nCrosstab skipped (need at least two small-cardinality categoricals).\n")
+}
 ```
 
