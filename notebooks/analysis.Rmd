@@ -13,4 +13,13 @@ df <- read.csv("/Users/thomassimmons/c/p/data/df_clean.csv")
 library(tidyverse)
 library(janitor)
 ```
+```{r}
+# Detect types
+num_cols <- names(df)[sapply(df, is.numeric)]
+cat_cols <- names(df)[sapply(df, function(x) is.character(x) | is.factor(x))]
+```
+
+
+```{r}
+```
 

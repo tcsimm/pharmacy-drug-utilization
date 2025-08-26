@@ -1787,10 +1787,21 @@ library(tidyverse)
 ℹ Use the ]8;;http://conflicted.r-lib.org/conflicted package]8;; to force all conflicts to become errors</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBEZXRlY3QgdHlwZXNcbm51bV9jb2xzIDwtIG5hbWVzKGRmKVtzYXBwbHkoZGYsIGlzLm51bWVyaWMpXVxuY2F0X2NvbHMgPC0gbmFtZXMoZGYpW3NhcHBseShkZiwgZnVuY3Rpb24oeCkgaXMuY2hhcmFjdGVyKHgpIHwgaXMuZmFjdG9yKHgpKV1cbmBgYCJ9 -->
+<pre class="r"><code># Detect types
+num_cols &lt;- names(df)[sapply(df, is.numeric)]
+cat_cols &lt;- names(df)[sapply(df, function(x) is.character(x) | is.factor(x))]</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUGhhcm1hY3kgYW5hbHlzaXMiCm91dHB1dDogaHRtbF9ub3RlYm9vawotLS0KCmBgYHtyfQojIFJlYWQgY2xlYW5lZCBkYXRhIGZyYW1lCmRmIDwtIHJlYWQuY3N2KCIvVXNlcnMvdGhvbWFzc2ltbW9ucy9jL3AvZGF0YS9kZl9jbGVhbi5jc3YiKQpgYGAKCmBgYHtyfQojIEluc3RhbGwgcGFja2FnZXMKbGlicmFyeSh0aWR5dmVyc2UpCmxpYnJhcnkoamFuaXRvcikKYGBgCgo=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUGhhcm1hY3kgYW5hbHlzaXMiCm91dHB1dDogaHRtbF9ub3RlYm9vawotLS0KCmBgYHtyfQojIFJlYWQgY2xlYW5lZCBkYXRhIGZyYW1lCmRmIDwtIHJlYWQuY3N2KCIvVXNlcnMvdGhvbWFzc2ltbW9ucy9jL3AvZGF0YS9kZl9jbGVhbi5jc3YiKQpgYGAKCmBgYHtyfQojIEluc3RhbGwgcGFja2FnZXMKbGlicmFyeSh0aWR5dmVyc2UpCmxpYnJhcnkoamFuaXRvcikKYGBgCmBgYHtyfQojIERldGVjdCB0eXBlcwpudW1fY29scyA8LSBuYW1lcyhkZilbc2FwcGx5KGRmLCBpcy5udW1lcmljKV0KY2F0X2NvbHMgPC0gbmFtZXMoZGYpW3NhcHBseShkZiwgZnVuY3Rpb24oeCkgaXMuY2hhcmFjdGVyKHgpIHwgaXMuZmFjdG9yKHgpKV0KYGBgCgoKYGBge3J9CmBgYAoK</div>
 
 
 
