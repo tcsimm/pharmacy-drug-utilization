@@ -17,7 +17,7 @@ This project analyzes the State Drug Utilization Data (2024) published by the Ce
 
 ---
 
-## ⚙️ Tools & Technologies
+## Tools & Technologies
 
 - Python: `pandas`, `numpy`, `matplotlib`, `seaborn`
 - SQLite: Storing and querying cleaned data
